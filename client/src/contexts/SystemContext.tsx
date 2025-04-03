@@ -348,13 +348,167 @@ export const SystemProvider: React.FC<{
         type: 'command',
         command
       }));
-    }
-  }, []);
+    } else {
+      console.log(`Executing local command: ${command}`);
+      // Simulate command response locally
+      setTimeout(() => {
+        let response = '';
+        const cmd = command.trim().toLowerCase();
+        
+        if (cmd === 'help') {
+          response = `
+Available commands:
+  help        - Display this help message
+  clear       - Clear the terminal
+  ls          - List files in the current directory
+  status      - Show system status
+  about       - About Phixeo OS
+  optimize    - Run system optimization
+  exit        - Exit terminal
+`;
+        } else if (cmd === 'ls') {
+          response = `
+Directory listing for /home/phixeo:
+  phixeo_os.py
+  phixeo_parser.py
+  phixeo_security.py
+  phixeo_runtime.py
+  modules/
+  data/
+  config/
+`;
+        } else if (cmd === 'status') {
+          response = `
+System Status:
+  CPU: ${metrics.cpu.usage}% usage (${metrics.cpu.cores} cores @ ${metrics.cpu.frequency.toFixed(1)}GHz)
+  Memory: ${(metrics.memory.used / 1024).toFixed(1)}GB/${(metrics.memory.total / 1024).toFixed(1)}GB (${metrics.memory.percent}% used)
+  Disk: ${(metrics.disk.used / 1024).toFixed(1)}GB/${(metrics.disk.total / 1024).toFixed(1)}GB (${metrics.disk.percent}% used)
+  Network: ${metrics.network.speed}Mbps, ${metrics.network.connections} connections
+  Security Status: No threats detected
+  Runtime Efficiency: ${(98 + Math.random() * 1.5).toFixed(1)}%
+`;
+        } else if (cmd === 'about') {
+          response = `
+Phixeo OS v1.2.4
+==============
+A revolutionary AI-powered operating system utilizing the Phixeo programming language.
+Built with golden ratio-based geometric constants and fractal optimization.
 
-  // Use local updates for now
+Features:
+- Advanced AI assistance with context awareness
+- Visual programming through fractal node architecture
+- O(log n) complexity for code compilation
+- Neural processing for optimal code path prediction
+- Memory optimization via tetrahedral constants
+
+Copyright (c) 2023 Phixeo Technologies
+`;
+        } else if (cmd === 'optimize') {
+          response = `
+[OPTIMIZATION] Starting system optimization...
+[OPTIMIZATION] Analyzing memory patterns...
+[OPTIMIZATION] Applying golden ratio algorithm...
+[OPTIMIZATION] Restructuring tetrahedral nodes...
+[OPTIMIZATION] Optimizing fractal connections...
+[OPTIMIZATION] Complete! System efficiency improved by ${(10 + Math.random() * 5).toFixed(1)}%
+`;
+        } else if (cmd === 'exit') {
+          response = 'Closing terminal session...';
+        } else {
+          response = `Command not found: ${cmd}. Type "help" for available commands.`;
+        }
+        
+        // Add a notification for optimizations
+        if (cmd === 'optimize') {
+          const newNotification: Notification = {
+            id: Date.now().toString(),
+            title: 'Optimization Complete',
+            message: `System efficiency improved by ${(10 + Math.random() * 5).toFixed(1)}%`,
+            type: 'info',
+            timestamp: new Date()
+          };
+          setNotifications(prev => [...prev, newNotification]);
+        }
+      }, 300 + Math.random() * 200);
+    }
+  }, [metrics]);
+
+  // Set up WebSocket connection with specific path
   useEffect(() => {
-    const intervalId = setInterval(refreshMetrics, 5000);
-    return () => clearInterval(intervalId);
+    try {
+      // Initially use local updates
+      const localUpdateIntervalId = setInterval(refreshMetrics, 5000);
+      
+      // Protocol detection (ws:// or wss://)
+      const protocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
+      const host = window.location.host;
+      // Use the specific WebSocket path
+      const wsUrl = `${protocol}${host}/ws`;
+      
+      console.log(`Attempting to connect to WebSocket at ${wsUrl}`);
+      
+      const ws = new WebSocket(wsUrl);
+      wsRef.current = ws;
+      
+      ws.onopen = () => {
+        console.log('WebSocket connection established');
+        setIsConnected(true);
+        // Clear local updates if WebSocket connection established
+        clearInterval(localUpdateIntervalId);
+      };
+      
+      ws.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          
+          if (data.type === 'initialState' || data.type === 'metricsUpdate') {
+            if (data.metrics) {
+              // Keep history and add new values
+              const currentMetrics = { ...metrics };
+              const updatedCpuHistory = [...currentMetrics.performanceHistory.cpu.slice(1), data.metrics.cpu.usage];
+              const updatedMemoryHistory = [...currentMetrics.performanceHistory.memory.slice(1), data.metrics.memory.percent];
+              const updatedNetworkHistory = [...currentMetrics.performanceHistory.network.slice(1), data.metrics.network.speed];
+              
+              setMetrics({
+                ...data.metrics,
+                processes: data.metrics.processes || currentMetrics.processes,
+                performanceHistory: {
+                  cpu: updatedCpuHistory,
+                  memory: updatedMemoryHistory,
+                  network: updatedNetworkHistory
+                }
+              });
+            }
+          } else if (data.type === 'aiResponse') {
+            addAIResponse(data.response);
+          } else if (data.type === 'commandResponse') {
+            console.log('Command response:', data.response);
+          }
+        } catch (error) {
+          console.error('Error parsing WebSocket message:', error);
+        }
+      };
+      
+      ws.onerror = (error) => {
+        console.error('WebSocket error:', error);
+        setIsConnected(false);
+      };
+      
+      ws.onclose = () => {
+        console.log('WebSocket connection closed');
+        setIsConnected(false);
+      };
+      
+      return () => {
+        clearInterval(localUpdateIntervalId);
+        if (ws) ws.close();
+      };
+    } catch (error) {
+      console.error('Error setting up WebSocket:', error);
+      // Fallback to local updates if WebSocket setup fails
+      const intervalId = setInterval(refreshMetrics, 5000);
+      return () => clearInterval(intervalId);
+    }
   }, []);
 
   const addUserMessage = (content: string) => {

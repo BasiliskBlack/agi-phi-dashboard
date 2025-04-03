@@ -61,6 +61,17 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        phixeo: {
+          bg: "hsl(var(--phixeo-bg))",
+          card: "hsl(var(--phixeo-card))",
+          highlight: "hsl(var(--phixeo-highlight))",
+          text: "hsl(var(--phixeo-text))",
+          gold: "hsl(var(--phixeo-gold))",
+          amber: "hsl(var(--phixeo-amber))",
+          bronze: "hsl(var(--phixeo-bronze))",
+          gray: "hsl(var(--phixeo-gray))",
+          "dark-gray": "hsl(var(--phixeo-dark-gray))",
+        },
       },
       keyframes: {
         "accordion-down": {
