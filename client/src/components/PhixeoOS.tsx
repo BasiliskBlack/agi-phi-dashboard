@@ -14,8 +14,11 @@ import {
   HardDrive, 
   Cpu, 
   Clock,
-  Zap
+  Zap,
+  BotIcon,
+  MessageSquare
 } from 'lucide-react';
+import PhixeoChat from './PhixeoChat';
 
 type Window = {
   id: string;
@@ -293,6 +296,29 @@ const PhixeoOS: React.FC = () => {
     }
   };
   
+  const openAIChat = () => {
+    // Check if AI chat is already open
+    const chatWindow = windows.find(w => w.id === 'chat');
+    if (chatWindow) {
+      activateWindow('chat');
+    } else {
+      const newWindow: Window = {
+        id: 'chat',
+        title: 'Phixeo AI Assistant',
+        component: <PhixeoChat />,
+        width: 450,
+        height: 600,
+        x: window.innerWidth / 2 - 225,
+        y: window.innerHeight / 2 - 300,
+        isActive: true,
+        isMaximized: false,
+      };
+      
+      setWindows(prev => [...prev, newWindow]);
+      setActiveWindow('chat');
+    }
+  };
+
   const openSystemMonitor = () => {
     // Check if system monitor is already open
     const monitorWindow = windows.find(w => w.id === 'monitor');
@@ -470,6 +496,7 @@ const PhixeoOS: React.FC = () => {
                 {window.id === 'editor' && <Code size={18} />}
                 {window.id === 'terminal' && <Terminal size={18} />}
                 {window.id === 'monitor' && <BarChart3 size={18} />}
+                {window.id === 'chat' && <MessageSquare size={18} />}
                 {window.title}
               </div>
               <div style={{ display: 'flex', gap: SPACING.sm }}>
@@ -617,6 +644,28 @@ const PhixeoOS: React.FC = () => {
           onClick={openSystemMonitor}
         >
           <BarChart3 size={24} />
+        </button>
+        
+        <button 
+          className="dock-icon"
+          style={{
+            width: '50px',
+            height: '50px',
+            borderRadius: RADIUS.md,
+            backgroundColor: windows.some(w => w.id === 'chat' && w.isActive) 
+              ? COLORS.accent1 
+              : 'transparent',
+            border: `1px solid ${windows.some(w => w.id === 'chat') ? COLORS.darkGold : 'transparent'}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: COLORS.gold,
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+          }}
+          onClick={openAIChat}
+        >
+          <MessageSquare size={24} />
         </button>
         
         <button 

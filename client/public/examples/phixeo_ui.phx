@@ -1,279 +1,346 @@
-# Phixeo UI Framework
-# This module implements the UI system with golden ratio optimized layouts
-# Based on the Phi constant (φ = 1.618...)
+# Phixeo UI Component Framework
+# Demonstrates the power of golden ratio-based UI design
 
-# Import necessary Phixeo modules
-import phixeo.std as std
-import phixeo.math as math
 import phixeo.ui as ui
-import phixeo.color as color
+import phixeo.math as math
+import phixeo.animation as animation
 
-# Define golden ratio constant and derivatives
+// Golden ratio constant - the foundation of aesthetic design
 const PHI = 1.618033988749895
-const PHI_INVERSE = 0.618033988749895
-const PHI_SQUARED = 2.618033988749895
+const PHI_INV = 0.618033988749895
 
-# Define the base PhixeoUI class
-class PhixeoUI {
-  // Core UI properties
-  var version = "1.0.0"
-  var theme = "dark"
-  var colorScheme = {
-    primary: "#FFD700",    // Gold
-    secondary: "#212121",  // Dark gray
-    accent: "#B8860B",     // Dark gold
-    background: "#000000", // Black
-    text: "#FFFFFF"        // White
+/**
+ * PhiUI - A UI framework based on golden ratio principles
+ * Creates visually harmonious interfaces with mathematically perfect proportions
+ */
+class PhiUI {
+  constructor(theme = "dark") {
+    this.theme = theme
+    this.components = []
+    this.containers = []
+    this.gridSize = 8 // Base grid size
+    this.phi = PHI // Golden ratio
+    
+    // Set color scheme based on theme
+    this._setColorScheme()
+    
+    print("Initialized PhiUI framework with " + theme + " theme")
+    print("Using φ (phi) = " + this.phi + " for proportional harmony")
   }
   
-  // Constructor
-  constructor(options = {}) {
-    // Override defaults with options
-    if (options.theme) this.theme = options.theme
-    if (options.colorScheme) this.colorScheme = { ...this.colorScheme, ...options.colorScheme }
-    
-    print("PhixeoUI initialized with φ-optimized layouts")
-    
-    // Initialize UI system
-    this.initializeUISystem()
-  }
-  
-  // Initialize the UI system
-  function initializeUISystem() {
-    print("Initializing φ-optimized UI system...")
-    
-    // Set up the root container
-    this.setupRootContainer()
-    
-    // Register base components
-    this.registerComponents()
-    
-    // Apply golden ratio to layout system
-    this.applyPhiLayout()
-    
-    print("UI system initialized with golden ratio proportions")
-    
-    return true
-  }
-  
-  // Set up the root container
-  function setupRootContainer() {
-    print("Setting up root container...")
-    
-    // Define a container using phi-based proportions
-    var rootContainer = {
-      width: "100%",
-      height: "100%",
-      padding: this.calculatePhiSpacing(16),
-      backgroundColor: this.colorScheme.background,
-      color: this.colorScheme.text
+  function _setColorScheme() {
+    if (this.theme === "dark") {
+      this.colors = {
+        background: "#121212",
+        foreground: "#E0E0E0",
+        primary: "#D4AF37", // Gold
+        secondary: "#212121",
+        accent: "#665826",
+        border: "#333333",
+        shadow: "rgba(0,0,0,0.5)"
+      }
+    } else {
+      this.colors = {
+        background: "#F5F5F5",
+        foreground: "#121212",
+        primary: "#D4AF37", // Gold
+        secondary: "#E5E5E5",
+        accent: "#E6D69C",
+        border: "#CCCCCC",
+        shadow: "rgba(0,0,0,0.1)"
+      }
     }
     
-    print("Root container created with φ-based spacing")
-    return rootContainer
+    print("Set color scheme for " + this.theme + " theme")
   }
   
-  // Register UI components
-  function registerComponents() {
-    print("Registering φ-optimized UI components...")
+  function createContainer(options = {}) {
+    var id = "container_" + (this.containers.length + 1)
     
-    // Define a list of basic components
-    var components = [
-      "Button",
-      "Card",
-      "Input",
-      "Modal",
-      "Navigation",
-      "Panel",
-      "Slider",
-      "Table",
-      "Tabs",
-      "Window"
-    ]
+    var defaults = {
+      id: id,
+      width: 800,
+      height: 600,
+      padding: this.gridSize * 2,
+      gap: this.gridSize * PHI_INV
+    }
     
-    // Register each component
+    var container = { ...defaults, ...options }
+    
+    // Apply golden ratio if dimensions not explicitly set
+    if (!options.height && options.width) {
+      container.height = Math.round(options.width / this.phi)
+    } else if (!options.width && options.height) {
+      container.width = Math.round(options.height * this.phi)
+    }
+    
+    // Store container
+    this.containers.push(container)
+    
+    print(`Created container ${container.id} (${container.width}x${container.height})`)
+    return container
+  }
+  
+  function createComponent(type, options = {}) {
+    var id = type + "_" + (this.components.length + 1)
+    
+    var defaults = {
+      id: id,
+      type: type,
+      container: this.containers.length > 0 ? this.containers[0].id : null,
+      width: this.gridSize * Math.round(PHI * 10),
+      height: this.gridSize * Math.round(PHI * 6),
+      x: this.gridSize * 2,
+      y: this.gridSize * 2,
+      text: "Phi Component",
+      color: this.colors.primary,
+      borderRadius: this.gridSize * PHI_INV
+    }
+    
+    // Special defaults based on component type
+    if (type === "button") {
+      defaults.width = this.gridSize * Math.round(PHI * 8)
+      defaults.height = this.gridSize * Math.round(PHI * 3)
+      defaults.text = "Button"
+    } else if (type === "input") {
+      defaults.width = this.gridSize * Math.round(PHI * 12)
+      defaults.height = this.gridSize * Math.round(PHI * 3)
+      defaults.text = ""
+      defaults.placeholder = "Enter text..."
+    } else if (type === "card") {
+      defaults.width = this.gridSize * Math.round(PHI * 16)
+      defaults.height = this.gridSize * Math.round(PHI * 10)
+      defaults.title = "Card Title"
+      defaults.content = "Card content goes here"
+    }
+    
+    var component = { ...defaults, ...options }
+    
+    // Apply golden ratio proportions if appropriate
+    if (type === "card" && !options.height && options.width) {
+      component.height = Math.round(options.width / this.phi)
+    }
+    
+    // Store component
+    this.components.push(component)
+    
+    print(`Created ${type} component: ${component.id}`)
+    return component
+  }
+  
+  function applyLayout(containerId, layout = "phi-grid") {
+    var container = this.containers.find(c => c.id === containerId)
+    if (!container) {
+      print("Error: Container not found")
+      return
+    }
+    
+    var containerComponents = this.components.filter(c => c.container === containerId)
+    print(`Applying ${layout} layout to ${containerComponents.length} components in ${containerId}`)
+    
+    if (layout === "phi-grid") {
+      this._applyPhiGridLayout(container, containerComponents)
+    } else if (layout === "phi-spiral") {
+      this._applyPhiSpiralLayout(container, containerComponents)
+    } else if (layout === "phi-cascade") {
+      this._applyPhiCascadeLayout(container, containerComponents)
+    } else {
+      print("Unknown layout type: " + layout)
+    }
+  }
+  
+  function _applyPhiGridLayout(container, components) {
+    // Apply a grid layout based on the golden ratio
+    print("Applying phi-grid layout with golden ratio proportions")
+    
+    var padding = container.padding || this.gridSize * 2
+    var gap = container.gap || this.gridSize
+    
+    // Calculate phi-based column width
+    var baseWidth = Math.round((container.width - padding * 2) / (1 + this.phi))
+    var wideWidth = Math.round(baseWidth * this.phi)
+    
+    // Calculate positions
     for (var i = 0; i < components.length; i++) {
-      print("Registered: " + components[i] + " with φ-optimization")
+      var row = Math.floor(i / 2)
+      var col = i % 2
+      
+      var x = padding + (col === 0 ? 0 : baseWidth + gap)
+      var y = padding + row * (components[0].height + gap)
+      
+      components[i].x = x
+      components[i].y = y
+      components[i].width = col === 0 ? baseWidth : wideWidth
+      
+      print(`Positioned ${components[i].id} at (${x}, ${y}) with width ${components[i].width}`)
     }
-    
-    return components
   }
   
-  // Apply golden ratio to layout system
-  function applyPhiLayout() {
-    print("Applying golden ratio to layout system...")
+  function _applyPhiSpiralLayout(container, components) {
+    // Position components in a Fibonacci spiral pattern
+    print("Applying phi-spiral layout with Fibonacci sequence")
     
-    // Generate a phi-based spacing scale
-    var spacingScale = this.generatePhiScale(4, 8)
+    var centerX = container.width / 2
+    var centerY = container.height / 2
+    var radius = Math.min(container.width, container.height) / 4
     
-    // Generate a phi-based typography scale
-    var typographyScale = this.generatePhiScale(12, 6)
+    for (var i = 0; i < components.length; i++) {
+      // Calculate angle based on golden ratio
+      var angle = i * this.phi * Math.PI * 2
+      
+      // Calculate spiral radius
+      var spiralRadius = radius * Math.sqrt(i + 1) / 2
+      
+      // Calculate position
+      var x = centerX + Math.cos(angle) * spiralRadius - components[i].width / 2
+      var y = centerY + Math.sin(angle) * spiralRadius - components[i].height / 2
+      
+      components[i].x = Math.round(x)
+      components[i].y = Math.round(y)
+      
+      print(`Positioned ${components[i].id} on spiral at (${components[i].x}, ${components[i].y})`)
+    }
+  }
+  
+  function _applyPhiCascadeLayout(container, components) {
+    // Cascade components with phi-based staggering
+    print("Applying phi-cascade layout with golden ratio staggering")
     
-    print("Generated φ-based spacing scale: " + spacingScale)
-    print("Generated φ-based typography scale: " + typographyScale)
+    var startX = container.padding || this.gridSize * 2
+    var startY = container.padding || this.gridSize * 2
+    var xOffset = this.gridSize * PHI
+    var yOffset = this.gridSize * PHI_INV
+    
+    for (var i = 0; i < components.length; i++) {
+      components[i].x = startX + i * xOffset
+      components[i].y = startY + i * yOffset
+      
+      print(`Positioned ${components[i].id} at (${components[i].x}, ${components[i].y})`)
+    }
+  }
+  
+  function generatePhiColors(baseColor = "#D4AF37", count = 5) {
+    // Generate a harmonious color palette based on phi
+    print("Generating phi-harmonized color palette")
+    
+    var colors = [baseColor]
+    var hsl = this._hexToHSL(baseColor)
+    
+    for (var i = 1; i < count; i++) {
+      // Update hue using golden ratio
+      hsl.h = (hsl.h + 360 * PHI_INV) % 360
+      
+      // Generate new color
+      colors.push(this._hslToHex(hsl.h, hsl.s, hsl.l))
+    }
+    
+    print("Generated " + colors.length + " phi-harmonized colors")
+    return colors
+  }
+  
+  function _hexToHSL(hex) {
+    // Convert hex to HSL (simplified for example)
+    return { h: 45, s: 70, l: 50 } // Gold-like color
+  }
+  
+  function _hslToHex(h, s, l) {
+    // Convert HSL to hex (simplified for example)
+    return "#" + Math.floor(Math.random() * 16777215).toString(16)
+  }
+  
+  function applyAnimation(componentId, animationType = "phi-fade") {
+    var component = this.components.find(c => c.id === componentId)
+    if (!component) {
+      print("Error: Component not found")
+      return
+    }
+    
+    print(`Applying ${animationType} animation to ${componentId}`)
+    
+    // Set animation properties
+    component.animation = {
+      type: animationType,
+      duration: 500 * PHI_INV, // Phi-optimized duration
+      delay: 100 * PHI_INV,
+      easing: "phi-cubic-bezier" // Special phi-based easing function
+    }
+    
+    return component.animation
+  }
+  
+  function render() {
+    print("Rendering PhiUI interface with " + this.components.length + " components")
+    
+    // Render containers
+    for (var i = 0; i < this.containers.length; i++) {
+      var container = this.containers[i]
+      print(`Rendering container ${container.id} (${container.width}x${container.height})`)
+    }
+    
+    // Render components
+    for (var i = 0; i < this.components.length; i++) {
+      var component = this.components[i]
+      print(`Rendering ${component.type} component: ${component.id} at (${component.x}, ${component.y})`)
+      
+      if (component.animation) {
+        print(`  - With ${component.animation.type} animation (${component.animation.duration}ms)`)
+      }
+    }
     
     return {
-      spacing: spacingScale,
-      typography: typographyScale
-    }
-  }
-  
-  // Generate a scale based on the golden ratio
-  function generatePhiScale(base, steps) {
-    print("Generating φ-scale with base " + base + " and " + steps + " steps")
-    
-    var scale = []
-    
-    // Generate values in both directions (smaller and larger than base)
-    for (var i = -Math.floor(steps/2); i <= Math.ceil(steps/2); i++) {
-      var value = Math.round(base * Math.pow(PHI, i))
-      scale.push(value)
-    }
-    
-    return scale
-  }
-  
-  // Calculate spacing based on the golden ratio
-  function calculatePhiSpacing(base) {
-    var spacings = {}
-    
-    spacings.xs = Math.round(base * Math.pow(PHI_INVERSE, 2))
-    spacings.sm = Math.round(base * PHI_INVERSE)
-    spacings.md = base
-    spacings.lg = Math.round(base * PHI)
-    spacings.xl = Math.round(base * PHI_SQUARED)
-    
-    return spacings
-  }
-  
-  // Create a window with phi-optimized proportions
-  function createWindow(title, content, options = {}) {
-    print("Creating window: " + title + " with φ-optimized proportions")
-    
-    // Default width and height based on the golden ratio
-    var defaultWidth = 800
-    var defaultHeight = Math.round(defaultWidth * PHI_INVERSE)
-    
-    // Override with options if provided
-    var width = options.width || defaultWidth
-    var height = options.height || defaultHeight
-    
-    var window = {
-      title: title,
-      content: content,
-      width: width,
-      height: height,
-      aspectRatio: width / height,
-      isPhiOptimized: Math.abs((width / height) - PHI_INVERSE) < 0.01
-    }
-    
-    print("Window created with aspect ratio: " + window.aspectRatio.toFixed(3))
-    print("Is φ-optimized: " + window.isPhiOptimized)
-    
-    return window
-  }
-  
-  // Create a card with phi-optimized proportions
-  function createCard(title, content, options = {}) {
-    print("Creating card: " + title + " with φ-optimized proportions")
-    
-    // Default width and height based on the golden ratio
-    var defaultWidth = 320
-    var defaultHeight = Math.round(defaultWidth * PHI_INVERSE)
-    
-    // Override with options if provided
-    var width = options.width || defaultWidth
-    var height = options.height || defaultHeight
-    
-    var card = {
-      title: title,
-      content: content,
-      width: width,
-      height: height,
-      aspectRatio: width / height,
-      isPhiOptimized: Math.abs((width / height) - PHI_INVERSE) < 0.01
-    }
-    
-    print("Card created with aspect ratio: " + card.aspectRatio.toFixed(3))
-    print("Is φ-optimized: " + card.isPhiOptimized)
-    
-    return card
-  }
-  
-  // Create a layout grid with phi-optimized proportions
-  function createGrid(columns, rows, options = {}) {
-    print("Creating grid with " + columns + " columns and " + rows + " rows")
-    
-    // Use phi-based proportions for grid cells
-    var grid = {
-      columns: columns,
-      rows: rows,
-      columnWidths: [],
-      rowHeights: []
-    }
-    
-    // If phiColumnsEnabled, distribute columns using golden ratio
-    if (options.phiColumnsEnabled) {
-      print("Applying φ-based column distribution")
-      var remainingWidth = 1
-      var widths = []
-      
-      for (var i = 0; i < columns - 1; i++) {
-        var width = remainingWidth * PHI_INVERSE
-        widths.push(width)
-        remainingWidth -= width
-      }
-      
-      widths.push(remainingWidth)
-      grid.columnWidths = widths
-      
-      print("Column widths based on φ: " + widths.map(w => (w * 100).toFixed(1) + "%").join(", "))
-    }
-    
-    return grid
-  }
-  
-  // Get UI information
-  function getInfo() {
-    var info = {
-      version: this.version,
+      containers: this.containers.length,
+      components: this.components.length,
       theme: this.theme,
-      colorScheme: this.colorScheme,
-      phi: PHI,
-      phiInverse: PHI_INVERSE,
-      phiSquared: PHI_SQUARED
+      phiRatio: this.phi
     }
-    
-    print("UI information: " + JSON.stringify(info, null, 2))
-    return info
   }
 }
 
-// Create UI instance
-var phixeoUI = new PhixeoUI({
-  theme: "dark",
-  colorScheme: {
-    primary: "#FFD700",    // Gold
-    accent: "#DAA520"      // Golden rod
-  }
+// Initialize PhiUI
+var ui = new PhiUI("dark")
+
+// Create main container
+var mainContainer = ui.createContainer({
+  id: "main",
+  width: 1200,
+  height: 800
 })
 
-// Get UI system info
-phixeoUI.getInfo()
-
-// Create a window with phi-optimized proportions
-var mainWindow = phixeoUI.createWindow("Main Application", "Content here...", {
-  width: 1000
+// Create components
+ui.createComponent("card", {
+  container: "main",
+  title: "Golden Ratio Design",
+  content: "Using the divine proportion (φ = 1.618...) for visually pleasing interfaces"
 })
 
-// Create a card with phi-optimized proportions
-var dashboardCard = phixeoUI.createCard("System Dashboard", "Dashboard content...")
-
-// Create a phi-optimized grid
-var mainGrid = phixeoUI.createGrid(3, 2, {
-  phiColumnsEnabled: true
+ui.createComponent("button", {
+  container: "main",
+  text: "Phi Action"
 })
 
-// Output UI version
-print("\nPhixeo UI Framework v" + phixeoUI.version + " running")
-print("Copyright © " + (new Date()).getFullYear() + " Phixeo Technologies")
+ui.createComponent("input", {
+  container: "main",
+  placeholder: "Enter phi-optimized text..."
+})
+
+ui.createComponent("card", {
+  container: "main",
+  title: "Fibonacci Sequence",
+  content: "1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ..."
+})
+
+// Apply phi-based layout
+ui.applyLayout("main", "phi-grid")
+
+// Generate phi-harmonious color palette
+var colors = ui.generatePhiColors("#D4AF37", 5)
+print("Phi-harmonized color palette: " + colors.join(", "))
+
+// Apply animations
+ui.applyAnimation("card_1", "phi-fade")
+ui.applyAnimation("button_1", "phi-slide")
+
+// Render the UI
+var result = ui.render()
+print("Rendered PhiUI interface with " + result.components + " components")
+print("Using golden ratio (φ): " + result.phiRatio)
