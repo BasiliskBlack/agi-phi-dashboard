@@ -455,10 +455,10 @@ const PhixeoOS: React.FC = () => {
             className="window"
             style={{
               position: 'absolute',
-              width: window.isMaximized ? '100vw' : `${window.width}px`,
-              height: window.isMaximized ? '100vh' : `${window.height}px`,
-              left: window.isMaximized ? 0 : window.x,
-              top: window.isMaximized ? 0 : window.y,
+              width: window.isMaximized ? 'calc(100vw - 4px)' : `${window.width}px`,
+              height: window.isMaximized ? 'calc(100vh - 40px)' : `${window.height}px`,
+              left: window.isMaximized ? 2 : window.x,
+              top: window.isMaximized ? 30 : window.y,
               zIndex: window.isActive ? 10 : 5,
               borderRadius: window.isMaximized ? 0 : RADIUS.md,
               overflow: 'hidden',
@@ -603,7 +603,7 @@ const PhixeoOS: React.FC = () => {
         </button>
         
         <button 
-          className="dock-icon"
+          className="dock-icon phixeo-fractal"
           style={{
             width: '50px',
             height: '50px',
@@ -617,7 +617,6 @@ const PhixeoOS: React.FC = () => {
             justifyContent: 'center',
             color: COLORS.gold,
             cursor: 'pointer',
-            transition: 'all 0.2s ease',
           }}
           onClick={openTerminal}
         >
@@ -625,7 +624,7 @@ const PhixeoOS: React.FC = () => {
         </button>
         
         <button 
-          className="dock-icon"
+          className="dock-icon phixeo-fractal"
           style={{
             width: '50px',
             height: '50px',
@@ -639,7 +638,6 @@ const PhixeoOS: React.FC = () => {
             justifyContent: 'center',
             color: COLORS.gold,
             cursor: 'pointer',
-            transition: 'all 0.2s ease',
           }}
           onClick={openSystemMonitor}
         >
@@ -647,7 +645,7 @@ const PhixeoOS: React.FC = () => {
         </button>
         
         <button 
-          className="dock-icon"
+          className="dock-icon phixeo-fractal"
           style={{
             width: '50px',
             height: '50px',
@@ -661,7 +659,6 @@ const PhixeoOS: React.FC = () => {
             justifyContent: 'center',
             color: COLORS.gold,
             cursor: 'pointer',
-            transition: 'all 0.2s ease',
           }}
           onClick={openAIChat}
         >
@@ -669,7 +666,7 @@ const PhixeoOS: React.FC = () => {
         </button>
         
         <button 
-          className="dock-icon"
+          className="dock-icon phixeo-fractal"
           style={{
             width: '50px',
             height: '50px',
@@ -680,7 +677,6 @@ const PhixeoOS: React.FC = () => {
             justifyContent: 'center',
             color: COLORS.gold,
             cursor: 'pointer',
-            transition: 'all 0.2s ease',
           }}
         >
           <Settings size={24} />
@@ -708,21 +704,60 @@ const PhixeoOS: React.FC = () => {
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: SPACING.md }}>
           <span style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: SPACING.xs }}>
-            <span className="phi-icon">φ</span> Phixeo OS
+            <span 
+              className="phi-icon" 
+              style={{ 
+                animation: 'phi-pulse 3s infinite',
+                display: 'inline-block',
+                color: COLORS.gold,
+                textShadow: '0 0 5px rgba(255, 215, 0, 0.7)'
+              }}
+            >
+              φ
+            </span> 
+            <span 
+              style={{ 
+                background: 'linear-gradient(to right, #FFD700, #B8860B, #FFD700)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundSize: '200% auto',
+                animation: 'shine 3s linear infinite'
+              }}
+            >
+              Phixeo OS
+            </span>
           </span>
         </div>
         
         <div style={{ display: 'flex', alignItems: 'center', gap: SPACING.md }}>
-          <Badge variant="outline" className="bg-amber-950/30 text-amber-500 border-amber-700/30">
-            <Cpu size={14} className="mr-1" /> {metrics.cpu}%
+          <Badge 
+            variant="outline" 
+            className="bg-amber-950/30 text-amber-500 border-amber-700/30"
+            style={{ animation: metrics.cpu > 80 ? 'phi-pulse 1s infinite' : '' }}
+          >
+            <Cpu size={14} className="mr-1" style={{ animation: 'spin 3s linear infinite' }} /> {metrics.cpu}%
           </Badge>
-          <Badge variant="outline" className="bg-amber-950/30 text-amber-500 border-amber-700/30">
-            <HardDrive size={14} className="mr-1" /> {metrics.memory}%
+          <Badge 
+            variant="outline" 
+            className="bg-amber-950/30 text-amber-500 border-amber-700/30"
+            style={{ animation: metrics.memory > 80 ? 'phi-pulse 1s infinite' : '' }}
+          >
+            <HardDrive size={14} className="mr-1" style={{ animation: 'goldenSpin 4s infinite' }} /> {metrics.memory}%
           </Badge>
-          <Badge variant="outline" className="bg-amber-950/30 text-amber-500 border-amber-700/30">
-            <Zap size={14} className="mr-1" /> {metrics.efficiency}%
+          <Badge 
+            variant="outline" 
+            className="bg-amber-950/30 text-amber-500 border-amber-700/30"
+            style={{ animation: 'phi-glow 3s infinite' }}
+          >
+            <Zap size={14} className="mr-1" style={{ animation: 'phiBounce 1.5s infinite' }} /> {metrics.efficiency}%
           </Badge>
-          <span>
+          <span style={{ 
+            animation: 'shine 3s linear infinite',
+            background: 'linear-gradient(90deg, #FFD700, #B8860B, #FFD700)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundSize: '200% auto',
+          }}>
             <Clock size={16} className="inline-block mr-1" />
             {new Date().toLocaleTimeString()}
           </span>

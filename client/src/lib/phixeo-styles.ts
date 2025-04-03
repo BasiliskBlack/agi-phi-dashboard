@@ -129,8 +129,13 @@ export const TRANSITIONS = {
   fast: `${150}ms ease-in-out`,
   normal: `${250}ms ease-in-out`,
   slow: `${400}ms ease-in-out`,
-  // Golden ratio based transition
+  // Golden ratio based transitions
   golden: `${Math.round(250 * PHI / 2)}ms cubic-bezier(0.618, 0, 0.382, 1)`,
+  goldenFast: `${Math.round(150 * PHI / 2)}ms cubic-bezier(0.618, 0, 0.382, 1)`,
+  goldenSlow: `${Math.round(400 * PHI / 2)}ms cubic-bezier(0.618, 0, 0.382, 1)`,
+  phiScale: `${Math.round(300 * PHI / 2)}ms cubic-bezier(0.175, 0.885, 0.32, 1.275)`,
+  phiSlide: `${Math.round(250 * PHI / 2)}ms cubic-bezier(0.25, 1, 0.5, 1)`,
+  phiElastic: `${Math.round(500 * PHI / 2)}ms cubic-bezier(0.68, -0.55, 0.265, 1.55)`,
 };
 
 // Z-index scale
@@ -218,6 +223,14 @@ export const ANIMATIONS = {
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
   }`,
+  slideInRight: `@keyframes slideInRight {
+    from { transform: translateX(20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }`,
+  slideInLeft: `@keyframes slideInLeft {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }`,
   pulse: `@keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
@@ -230,6 +243,29 @@ export const ANIMATIONS = {
   goldenSpin: `@keyframes goldenSpin {
     from { transform: rotate(0deg); }
     to { transform: rotate(${360 / PHI}deg); }
+  }`,
+  phiPulse: `@keyframes phiPulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 rgba(212, 175, 55, 0); }
+    ${Math.round(100 / PHI)}% { transform: scale(1.02); box-shadow: 0 0 8px rgba(212, 175, 55, 0.5); }
+    100% { transform: scale(1); box-shadow: 0 0 0 rgba(212, 175, 55, 0); }
+  }`,
+  phiGlow: `@keyframes phiGlow {
+    0% { box-shadow: 0 0 0px rgba(212, 175, 55, 0.2); }
+    ${Math.round(100 / PHI)}% { box-shadow: 0 0 12px rgba(212, 175, 55, 0.8); }
+    100% { box-shadow: 0 0 0px rgba(212, 175, 55, 0.2); }
+  }`,
+  phiBounce: `@keyframes phiBounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-${10 / PHI}px); }
+    60% { transform: translateY(-${5 / PHI}px); }
+  }`,
+  goldenExpand: `@keyframes goldenExpand {
+    from { opacity: 0; transform: scale(0.${Math.round(PHI * 100) % 100}); }
+    to { opacity: 1; transform: scale(1); }
+  }`,
+  goldenShrink: `@keyframes goldenShrink {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.${Math.round(PHI * 100) % 100}); }
   }`,
 };
 

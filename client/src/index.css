@@ -253,6 +253,15 @@
   .app-icon:hover {
     @apply -translate-y-1;
   }
+  
+  .dock-icon {
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  
+  .dock-icon:hover {
+    transform: scale(1.1);
+    animation: phi-glow 2s infinite;
+  }
 
   .notification {
     animation: slide-in 0.5s ease-out;
@@ -267,6 +276,40 @@
       transform: translateX(0);
       opacity: 1;
     }
+  }
+  
+  @keyframes phi-pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 rgba(212, 175, 55, 0); }
+    61.8% { transform: scale(1.02); box-shadow: 0 0 8px rgba(212, 175, 55, 0.5); }
+    100% { transform: scale(1); box-shadow: 0 0 0 rgba(212, 175, 55, 0); }
+  }
+  
+  @keyframes phi-glow {
+    0% { box-shadow: 0 0 0px rgba(212, 175, 55, 0.2); }
+    61.8% { box-shadow: 0 0 12px rgba(212, 175, 55, 0.8); }
+    100% { box-shadow: 0 0 0px rgba(212, 175, 55, 0.2); }
+  }
+  
+  @keyframes golden-expand {
+    from { opacity: 0; transform: scale(0.618); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  @keyframes golden-shrink {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.618); }
+  }
+  
+  @keyframes shine {
+    0% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+    100% { background-position: 0% center; }
+  }
+  
+  @keyframes phiBounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-6px); }
+    60% { transform: translateY(-3px); }
   }
 
   .connect-line {
