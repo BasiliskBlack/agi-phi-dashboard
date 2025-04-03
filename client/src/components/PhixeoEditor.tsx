@@ -120,12 +120,14 @@ const PhixeoEditor: React.FC<PhixeoEditorProps> = ({
       style={{
         display: 'flex',
         flexDirection: 'column',
-        width: '100%',
+        width: '99%',
         height,
+        minHeight: '600px',
         borderRadius: RADIUS.md,
         overflow: 'hidden',
         border: `1px solid ${COLORS.accent1}`,
         backgroundColor: COLORS.black,
+        margin: '0 auto',
       }}
     >
       <div 
@@ -166,10 +168,10 @@ const PhixeoEditor: React.FC<PhixeoEditorProps> = ({
             paddingRight: '10px',
             whiteSpace: 'nowrap'
           }}>
-            Midax - IDE for Cyber-Gold
+            Midax
           </span>
         </h3>
-        <div style={{ display: 'flex', gap: SPACING.sm }}>
+        <div style={{ display: 'flex', gap: SPACING.sm, minWidth: '280px', justifyContent: 'flex-end' }}>
           <Button 
             className="phixeo-button phixeo-button-primary"
             onClick={handleRun}
@@ -177,17 +179,23 @@ const PhixeoEditor: React.FC<PhixeoEditorProps> = ({
             style={{ 
               animation: isRunning ? '' : 'phi-glow 3s infinite',
               position: 'relative',
-              overflow: 'hidden'
+              overflow: 'hidden',
+              padding: '0 12px',
+              height: '36px'
             }}
           >
-            {isRunning ? 'Running...' : 'Run Phixeo Code'}
+            {isRunning ? 'Running...' : 'Run Code'}
           </Button>
           <Button 
             className="phixeo-button phixeo-button-secondary"
             onClick={handleClear}
-            style={{ animation: output ? 'phi-pulse 3s infinite' : '' }}
+            style={{ 
+              animation: output ? 'phi-pulse 3s infinite' : '',
+              padding: '0 12px',
+              height: '36px'
+            }}
           >
-            Clear Output
+            Clear
           </Button>
         </div>
       </div>
@@ -195,7 +203,7 @@ const PhixeoEditor: React.FC<PhixeoEditorProps> = ({
       <div 
         style={{
           display: 'grid',
-          gridTemplateColumns: '60% 40%',
+          gridTemplateColumns: '65% 35%',
           flex: 1,
           overflow: 'hidden',
           gap: '0',
@@ -221,8 +229,10 @@ const PhixeoEditor: React.FC<PhixeoEditorProps> = ({
                     border: `1px solid ${COLORS.accent1}`,
                     padding: '5px 16px',
                     position: 'relative',
-                    overflow: 'hidden'
+                    overflow: 'hidden',
+                    transition: 'all 0.3s ease',
                   }}
+                  data-state="active" // Force active state for styling
                 >
                   <div className="flex items-center gap-2">
                     <span className="phi-icon data-[state=active]:text-amber-400" style={{ 
@@ -245,7 +255,8 @@ const PhixeoEditor: React.FC<PhixeoEditorProps> = ({
                     border: `1px solid ${COLORS.accent1}`,
                     padding: '5px 16px',
                     position: 'relative',
-                    overflow: 'hidden'
+                    overflow: 'hidden',
+                    transition: 'all 0.3s ease'
                   }}
                 >
                   <div className="flex items-center gap-2">
@@ -303,17 +314,18 @@ const PhixeoEditor: React.FC<PhixeoEditorProps> = ({
                   Midax Example Programs
                 </span>
               </h3>
-                <div className="grid gap-4">
+                <div className="grid gap-6">
                   {EXAMPLE_PROGRAMS.map((example) => (
                     <div 
                       key={example.path}
-                      className="phixeo-card p-4 rounded-md transition-all"
+                      className="phixeo-card p-5 rounded-md transition-all"
                       style={{
                         background: '#0D0D0D',
                         border: `1px solid ${COLORS.accent1}`,
-                        boxShadow: 'inset 0 0 10px rgba(0, 0, 0, 0.3)',
+                        boxShadow: 'inset 0 0 10px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.5)',
                         position: 'relative',
-                        overflow: 'hidden'
+                        overflow: 'hidden',
+                        marginBottom: '8px'
                       }}
                     >
                       <h4 className="flex items-center gap-2 font-medium mb-2">
@@ -326,10 +338,16 @@ const PhixeoEditor: React.FC<PhixeoEditorProps> = ({
                           {example.name}
                         </span>
                       </h4>
-                      <p className="text-gray-300 text-sm mb-3">
-                        {example.name === "System Core" && "Core system module with fractal optimization algorithms"}
-                        {example.name === "UI Components" && "UI component system with golden ratio-based layouts"}
-                        {example.name === "Neural Optimization" && "Advanced neural network optimization engine"}
+                      <p className="text-gray-300 text-sm mb-4" style={{
+                        borderLeft: `2px solid ${COLORS.darkGold}`,
+                        paddingLeft: '10px',
+                        marginLeft: '2px',
+                        lineHeight: '1.4',
+                        textShadow: '0 1px 2px rgba(0,0,0,0.8)'
+                      }}>
+                        {example.name === "System Core" && "Core system module with fractal optimization algorithms. Implements phi-based efficiency scaling and golden ratio resource allocation."}
+                        {example.name === "UI Components" && "UI component system with golden ratio-based layouts. Renders interactive elements with built-in phi-scaling and animation effects."}
+                        {example.name === "Neural Optimization" && "Advanced neural network optimization engine. Utilizes golden ratio-based node arrangement for maximum parallel processing efficiency."}
                       </p>
                       <Button 
                         className="phixeo-button phixeo-button-primary w-full"
@@ -431,9 +449,16 @@ const PhixeoEditor: React.FC<PhixeoEditorProps> = ({
           >
             {output || 
               <div className="flex flex-col items-center justify-center h-full text-center opacity-60">
-                <span className="phi-icon" style={{ fontSize: FONT_SIZE.xl, color: COLORS.gold, marginBottom: SPACING.md }}>φ</span>
+                <span className="phi-icon" style={{ fontSize: FONT_SIZE.xl, color: COLORS.gold, marginBottom: SPACING.md, animation: 'phi-pulse 3s infinite' }}>φ</span>
                 <div>Run your Phixeo code to see output here...</div>
-                <div className="text-xs mt-2">Powered by the Golden Ratio</div>
+                <div className="text-sm mt-3 mb-2">Phixeo reduces coding time by 95%</div>
+                <div className="text-xs px-6">
+                  <span style={{ color: COLORS.gold }}>Write once, run everywhere</span>
+                  <span> · </span>
+                  <span style={{ color: COLORS.darkGold }}>Neural optimization engine</span>
+                  <span> · </span>
+                  <span style={{ color: COLORS.gold }}>φ-powered</span>
+                </div>
               </div>
             }
           </div>
