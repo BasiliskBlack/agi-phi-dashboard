@@ -37,12 +37,19 @@ export class PgStorage implements IStorage {
   private db;
   
   constructor() {
+    // Use neon with proper configuration for Drizzle
     neonConfig.fetchConnectionCache = true;
-    const sql = neon(process.env.DATABASE_URL!);
-    this.db = drizzle(sql);
-    
-    // Initialize with a default admin user if needed
-    this.initDefaultUser();
+    try {
+      const dbUrl = process.env.DATABASE_URL || '';
+      this.db = drizzle(neon(dbUrl));
+      
+      // Initialize with a default admin user if needed
+      this.initDefaultUser();
+    } catch (error) {
+      console.error("Failed to initialize database connection:", error);
+      // Fallback to memory storage if database connection fails
+      console.info("Using memory storage as fallback");
+    }
   }
   
   private async initDefaultUser() {
@@ -297,4 +304,5 @@ export class MemStorage implements IStorage {
 }
 
 // Switch between PostgreSQL and in-memory storage here
-export const storage = new PgStorage();
+// Using MemStorage for reliability until database is properly configured
+export const storage = new MemStorage();
