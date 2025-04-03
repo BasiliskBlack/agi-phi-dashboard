@@ -29,6 +29,7 @@ export const COLORS = {
   // Transparency variants
   blackAlpha: (alpha: number) => `rgba(26, 26, 26, ${alpha})`,
   goldAlpha: (alpha: number) => `rgba(255, 215, 0, ${alpha})`,
+  whiteAlpha: (alpha: number) => `rgba(255, 255, 255, ${alpha})`,
 };
 
 // Spacing scale based on golden ratio
@@ -114,13 +115,13 @@ export const FONT_WEIGHT = {
 
 // Shadows using golden ratio proportions
 export const SHADOWS = {
-  sm: `0 ${SPACING["-2"]} ${SPACING["-1"]} ${COLORS.blackAlpha(0.1)}`,
-  md: `0 ${SPACING["-1"]} ${SPACING["0"]} ${COLORS.blackAlpha(0.1)}`,
-  lg: `0 ${SPACING["0"]} ${SPACING["1"]} ${COLORS.blackAlpha(0.1)}`,
-  xl: `0 ${SPACING["1"]} ${SPACING["2"]} ${COLORS.blackAlpha(0.1)}`,
+  sm: `0 2px 4px ${COLORS.blackAlpha(0.1)}`,
+  md: `0 4px 8px ${COLORS.blackAlpha(0.1)}`,
+  lg: `0 8px 16px ${COLORS.blackAlpha(0.1)}`,
+  xl: `0 16px 24px ${COLORS.blackAlpha(0.1)}`,
   inner: `inset 0 2px 4px ${COLORS.blackAlpha(0.1)}`,
-  gold: `0 0 ${SPACING["1"]} ${COLORS.goldAlpha(0.6)}`,
-  glow: `0 0 ${SPACING["2"]} ${COLORS.goldAlpha(0.8)}`,
+  gold: `0 0 12px ${COLORS.goldAlpha(0.6)}`,
+  glow: `0 0 24px ${COLORS.goldAlpha(0.8)}`,
 };
 
 // Transitions optimized with golden ratio timing
@@ -214,7 +215,7 @@ export const ANIMATIONS = {
     to { opacity: 0; }
   }`,
   slideIn: `@keyframes slideIn {
-    from { transform: translateY(${SPACING["2"]}); opacity: 0; }
+    from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
   }`,
   pulse: `@keyframes pulse {

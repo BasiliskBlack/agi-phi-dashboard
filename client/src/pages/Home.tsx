@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { useSystem } from '@/contexts/SystemContext';
 import PhixeoOS from '@/components/PhixeoOS';
+import PhixAI from '@/components/PhixAI';
+import { COLORS } from '@/lib/phixeo-styles';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Cpu, Terminal, Zap, Code } from 'lucide-react';
 
 const Home: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -18,19 +21,19 @@ const Home: React.FC = () => {
     return (
       <div className="bg-black text-white h-screen flex flex-col items-center justify-center">
         <div className="text-center space-y-6">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-[#B8860B] to-[#FFD700] bg-clip-text text-transparent">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-amber-700 to-amber-400 bg-clip-text text-transparent">
             Phixeo OS
           </h1>
-          <p className="text-xl text-gray-400">
+          <p className="text-xl text-amber-500/70">
             Loading revolutionary AI-powered operating system
           </p>
           <div className="flex items-center justify-center space-x-2 mt-8">
-            <div className="w-3 h-3 bg-gold rounded-full animate-pulse"></div>
-            <div className="w-3 h-3 bg-gold rounded-full animate-pulse delay-150"></div>
-            <div className="w-3 h-3 bg-gold rounded-full animate-pulse delay-300"></div>
+            <div className="w-3 h-3 bg-amber-500 rounded-full animate-pulse"></div>
+            <div className="w-3 h-3 bg-amber-500 rounded-full animate-pulse delay-150"></div>
+            <div className="w-3 h-3 bg-amber-500 rounded-full animate-pulse delay-300"></div>
           </div>
-          <div className="text-xs text-gray-600 mt-8">
-            Using fractal algorithms to optimize startup...
+          <div className="phixeo-fractal text-sm text-amber-600/70 mt-8">
+            <span>Using fractal optimization to bootstrap system...</span>
           </div>
         </div>
       </div>
@@ -38,33 +41,27 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div className="bg-black text-white min-h-screen p-4 sm:p-6">
-      <div className="max-w-7xl mx-auto space-y-6">
-        {/* Header with branding */}
-        <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <div className="h-8 w-8 rounded-full bg-gradient-to-r from-[#B8860B] to-[#FFD700]"></div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-[#B8860B] to-[#FFD700] bg-clip-text text-transparent">
-              Phixeo OS
-            </h1>
-          </div>
-          <div className="text-sm text-gray-400">
-            Web Demo • v1.0
-          </div>
-        </div>
+    <div className="h-screen w-screen overflow-hidden bg-black">
+      <Tabs defaultValue="os" className="h-full">
+        <TabsList className="fixed top-2 left-1/2 transform -translate-x-1/2 z-50 bg-black border border-amber-800/30 p-1">
+          <TabsTrigger value="os" className="data-[state=active]:bg-amber-900/30">
+            <Cpu className="w-4 h-4 mr-2" />
+            Phixeo OS
+          </TabsTrigger>
+          <TabsTrigger value="ai" className="data-[state=active]:bg-amber-900/30">
+            <Zap className="w-4 h-4 mr-2" />
+            Phix AI
+          </TabsTrigger>
+        </TabsList>
         
-        {/* Main OS Interface */}
-        <PhixeoOS />
+        <TabsContent value="os" className="h-full m-0 p-0">
+          <PhixeoOS />
+        </TabsContent>
         
-        {/* Footer with explanation */}
-        <div className="mt-8 pt-6 border-t border-gray-800 text-center text-sm text-gray-400">
-          <p>
-            Phixeo OS showcases the revolutionary efficiency of Phixeo language. 
-            Traditional development would require 1.5-2 years and over 100,000 lines of code. 
-            With Phixeo, it was built in minutes with 90% less code.
-          </p>
-        </div>
-      </div>
+        <TabsContent value="ai" className="h-full m-0 p-0 flex justify-center items-center bg-gradient-to-b from-black to-slate-900">
+          <PhixAI />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };

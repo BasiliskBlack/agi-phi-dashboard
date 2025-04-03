@@ -91,6 +91,15 @@
   line-height: 1.618;
 }
 
+/* Gold gradient text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-dark-gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 /* Golden spiral animation */
 @keyframes goldenSpin {
   from { transform: rotate(0deg); }
