@@ -62,7 +62,7 @@ const PhixeoOS: React.FC = () => {
   useEffect(() => {
     const editorWindow: Window = {
       id: 'editor',
-      title: 'Phixeo Code Editor',
+      title: 'Midax',
       component: (
         <PhixeoEditor 
           height="100%" 
@@ -266,7 +266,7 @@ const PhixeoOS: React.FC = () => {
     } else {
       const newWindow: Window = {
         id: 'editor',
-        title: 'Midax - IDE for Cyber-Gold',
+        title: 'Midax',
         component: (
           <PhixeoEditor 
             height="100%" 

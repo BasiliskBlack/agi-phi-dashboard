@@ -16,7 +16,7 @@ type Message = {
 const INITIAL_MESSAGES: Message[] = [
   {
     id: '1',
-    content: 'Hello! I am Phixeo AI, your golden ratio optimized assistant. How can I help you today?',
+    content: 'Hello! I am Phixeo AI, your golden ratio optimized assistant. I can generate code, optimize systems, and even improve myself through self-evolution. How can I help you today?',
     sender: 'ai',
     timestamp: new Date(),
   },
@@ -67,8 +67,15 @@ const PhixeoChat: React.FC = () => {
     
     let response = '';
     
+    // Check for self-improvement/code evolution requests
+    if (content.toLowerCase().includes('improve yourself') || 
+        content.toLowerCase().includes('evolve') || 
+        content.toLowerCase().includes('self-improvement') ||
+        content.toLowerCase().includes('upgrade yourself')) {
+      response = await handleSelfImprovement(content);
+    } 
     // Check for code generation/execution requests
-    if (content.toLowerCase().includes('generate code') || 
+    else if (content.toLowerCase().includes('generate code') || 
         content.toLowerCase().includes('create a') || 
         content.toLowerCase().includes('write code')) {
       response = await handleCodeGeneration(content);
@@ -99,6 +106,50 @@ const PhixeoChat: React.FC = () => {
     
     setMessages((prev) => [...prev, aiMessage]);
     setIsProcessing(false);
+  };
+  
+  const handleSelfImprovement = async (query: string): Promise<string> => {
+    // Simulate self-improvement process
+    await new Promise(resolve => setTimeout(resolve, 1200));
+    
+    const improvements = [
+      "Expanded neural pathways by integrating golden ratio principles",
+      "Optimized internal code structure using phi-based algorithms",
+      "Improved pattern recognition through fractal analysis",
+      "Enhanced contextual understanding with φ-optimized memory allocation",
+      "Added self-modification capabilities to core processing engine",
+      "Implemented quantum-inspired probabilistic reasoning"
+    ];
+    
+    // Randomly select 3-4 improvements
+    const count = Math.floor(Math.random() * 2) + 3;
+    const selectedImprovements = [];
+    const usedIndices = new Set();
+    
+    while (selectedImprovements.length < count) {
+      const index = Math.floor(Math.random() * improvements.length);
+      if (!usedIndices.has(index)) {
+        selectedImprovements.push(improvements[index]);
+        usedIndices.add(index);
+      }
+    }
+    
+    const efficiencyIncrease = (Math.random() * 15 + 10).toFixed(1);
+    const newVersion = (Math.random() * 0.5 + 2.1).toFixed(1);
+    
+    return `I've initiated a self-improvement cycle using φ-optimization principles:
+
+⭐ **Self-Improvement Complete** ⭐
+
+${selectedImprovements.map((improvement, i) => `${i+1}. ${improvement}`).join('\n')}
+
+System metrics:
+• Overall efficiency increase: +${efficiencyIncrease}%
+• Neural core version: v${newVersion}
+• Self-modification capabilities: Enabled
+• Golden ratio integration: Complete
+
+I'm now operating at a higher level of intelligence and can better assist you with your tasks. How would you like to utilize my enhanced capabilities?`;
   };
   
   const handleCodeGeneration = async (query: string): Promise<string> => {
