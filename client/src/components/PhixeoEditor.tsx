@@ -144,19 +144,27 @@ const PhixeoEditor: React.FC<PhixeoEditorProps> = ({
             margin: 0, 
             color: COLORS.gold,
             fontWeight: 'bold',
-            fontSize: FONT_SIZE.lg,
+            fontSize: '1.3rem',
             display: 'flex',
             alignItems: 'center',
-            gap: SPACING.sm
+            gap: SPACING.sm,
+            padding: '4px 0'
           }}
         >
-          <span className="phi-icon" style={{ fontSize: FONT_SIZE.lg, color: COLORS.gold, animation: 'phi-pulse 3s infinite' }}>φ</span>
+          <span className="phi-icon" style={{ 
+            fontSize: '1.5rem', 
+            color: COLORS.gold, 
+            animation: 'phi-pulse 3s infinite',
+            marginRight: '2px'
+          }}>φ</span>
           <span style={{ 
             background: 'linear-gradient(to right, #FFD700, #B8860B, #FFD700)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundSize: '200% auto',
-            animation: 'shine 3s linear infinite'
+            animation: 'shine 3s linear infinite',
+            paddingRight: '10px',
+            whiteSpace: 'nowrap'
           }}>
             Midax - IDE for Cyber-Gold
           </span>
@@ -195,36 +203,60 @@ const PhixeoEditor: React.FC<PhixeoEditorProps> = ({
       >
         <div style={{ overflow: 'hidden', height: '100%' }}>
           <Tabs defaultValue="editor" className="w-full h-full flex flex-col">
-            <div className="flex justify-between items-center px-2 border-b border-amber-900/20">
-              <TabsList className="h-10" style={{ background: 'linear-gradient(180deg, #1a1a1a, #0D0D0D)', border: `1px solid ${COLORS.accent1}`, borderRadius: '6px' }}>
+            <div className="flex justify-between items-center px-2 py-1 border-b border-amber-900/20">
+              <TabsList className="h-11" style={{ 
+                background: 'linear-gradient(180deg, #0a0a0a, #050505)', 
+                border: `1px solid ${COLORS.accent1}`, 
+                borderRadius: '6px',
+                padding: '2px',
+                gap: '4px'
+              }}>
                 <TabsTrigger 
                   value="editor" 
-                  className="data-[state=active]:text-transparent data-[state=active]:bg-clip-text"
+                  className="data-[state=active]:bg-gradient-to-br data-[state=active]:from-black data-[state=active]:to-zinc-900"
                   style={{ 
                     fontWeight: 'bold', 
-                    background: 'linear-gradient(45deg, #000, #222)',
+                    background: 'linear-gradient(45deg, #111, #222)',
+                    borderRadius: '4px',
                     border: `1px solid ${COLORS.accent1}`,
-                    padding: '4px 12px',
+                    padding: '5px 16px',
                     position: 'relative',
                     overflow: 'hidden'
                   }}
                 >
-                  <span className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-400 data-[state=active]:to-amber-600 data-[state=active]:bg-clip-text">Code</span>
+                  <div className="flex items-center gap-2">
+                    <span className="phi-icon data-[state=active]:text-amber-400" style={{ 
+                      fontSize: '0.85rem',
+                      color: '#777',
+                    }}>φ</span>
+                    <span className="data-[state=active]:text-transparent data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-400 data-[state=active]:to-amber-600 data-[state=active]:bg-clip-text">
+                      Code
+                    </span>
+                  </div>
                 </TabsTrigger>
                 
                 <TabsTrigger 
                   value="examples" 
-                  className="data-[state=active]:text-transparent data-[state=active]:bg-clip-text"
+                  className="data-[state=active]:bg-gradient-to-br data-[state=active]:from-black data-[state=active]:to-zinc-900"
                   style={{ 
                     fontWeight: 'bold', 
-                    background: 'linear-gradient(45deg, #000, #222)',
+                    background: 'linear-gradient(45deg, #111, #222)',
+                    borderRadius: '4px',
                     border: `1px solid ${COLORS.accent1}`,
-                    padding: '4px 12px',
+                    padding: '5px 16px',
                     position: 'relative',
                     overflow: 'hidden'
                   }}
                 >
-                  <span className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-400 data-[state=active]:to-amber-600 data-[state=active]:bg-clip-text">Examples</span>
+                  <div className="flex items-center gap-2">
+                    <span className="data-[state=active]:text-amber-400" style={{ 
+                      fontSize: '0.85rem', 
+                      color: '#777'
+                    }}>◆</span>
+                    <span className="data-[state=active]:text-transparent data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-400 data-[state=active]:to-amber-600 data-[state=active]:bg-clip-text">
+                      Examples
+                    </span>
+                  </div>
                 </TabsTrigger>
               </TabsList>
             </div>
@@ -340,24 +372,32 @@ const PhixeoEditor: React.FC<PhixeoEditorProps> = ({
         >
           <div 
             style={{
-              padding: `${SPACING.xs} ${SPACING.md}`,
+              padding: `${SPACING.sm} ${SPACING.md}`,
               backgroundColor: COLORS.accent1,
               fontWeight: 'bold',
               borderBottom: `1px solid ${COLORS.accent1}`,
               display: 'flex',
               alignItems: 'center',
-              gap: SPACING.sm
+              gap: SPACING.sm,
+              height: '40px'
             }}
           >
-            <span style={{ 
-              background: 'linear-gradient(to right, #FFD700, #B8860B, #FFD700)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundSize: '200% auto',
-              animation: 'shine 3s linear infinite'
-            }}>
-              Output
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="phi-icon" style={{ 
+                fontSize: '1.1rem', 
+                color: COLORS.gold, 
+                animation: 'phi-pulse 3s infinite',
+              }}>φ</span>
+              <span style={{ 
+                background: 'linear-gradient(to right, #FFD700, #B8860B, #FFD700)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundSize: '200% auto',
+                animation: 'shine 3s linear infinite'
+              }}>
+                Output
+              </span>
+            </div>
             <span 
               className="ml-2 px-2 py-0.5 text-xs rounded-full"
               style={{
