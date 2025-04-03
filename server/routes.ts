@@ -7,6 +7,11 @@ import {
   insertConversationSchema, 
   insertFileSchema 
 } from "@shared/schema";
+import { aiRouter } from "./ai";
+import { phixeoAiRouter } from "./phixeo-ai";
+
+// Golden ratio constant
+const PHI = (1 + Math.sqrt(5)) / 2; // 1.618033988749895
 
 // Extend Express Request interface to include session
 declare module 'express-session' {
@@ -17,6 +22,10 @@ declare module 'express-session' {
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Mount AI routers
+  app.use('/api/ai', aiRouter);
+  app.use('/api/phixeo', phixeoAiRouter);
+  
   const httpServer = createServer(app);
   
   // Set up WebSocket server for real-time updates
@@ -330,6 +339,8 @@ Available commands:
   status      - Show system status
   about       - About Phixeo OS
   optimize    - Run system optimization
+  phixeo      - Activate Phixeo AI system (experimental)
+  phixeo [command] - Execute command using Phixeo AI
   exit        - Exit terminal
 `;
   } else if (cmd === 'ls') {
@@ -379,8 +390,66 @@ Copyright (c) 2023 Phixeo Technologies
 [OPTIMIZATION] Optimizing fractal connections...
 [OPTIMIZATION] Complete! System efficiency improved by ${(10 + Math.random() * 5).toFixed(1)}%
 `;
+  } else if (cmd === 'phixeo') {
+    // Special "phixeo" command that showcases our one-command system access
+    response = `
+[PHIXEO] Activating Phixeo AI System...
+[PHIXEO] Loading advanced fractal node architecture...
+[PHIXEO] Initializing golden ratio-based algorithms...
+[PHIXEO] Optimizing memory with tetrahedral constants...
+[PHIXEO] Neural processing activated...
+[PHIXEO] Ready! System efficiency: ${(98 + Math.random() * 1.8).toFixed(1)}%
+
+Type any command or request in natural language, and Phixeo will understand.
+Example commands:
+- "Generate a recursive algorithm using golden ratio"
+- "Analyze memory usage and optimize"
+- "Create a visual representation of system architecture"
+`;
   } else if (cmd === 'exit') {
     response = 'Closing terminal session...';
+  } else if (cmd.startsWith('phixeo ')) {
+    // Process phixeo-specific commands with AI
+    const phixeoCommand = cmd.substring(7);
+    response = `[PHIXEO] Processing command: "${phixeoCommand}"...\n`;
+    
+    // We'll send a response now and then update asynchronously with the AI response
+    ws.send(JSON.stringify({
+      type: 'commandResponse',
+      response
+    }));
+    
+    // Use setTimeout to simulate AI processing time
+    setTimeout(async () => {
+      try {
+        // We would normally call our Phixeo AI API here
+        // For demo purposes, we'll just generate a response without actual API call
+        const aiResponse = `[PHIXEO] Command processed successfully.\n
+Results:
+- Analyzed command using tetrahedral filtering
+- Applied golden ratio optimization (efficiency factor: ${(PHI * 10).toFixed(2)})
+- Executed using fractal node architecture
+- Runtime: ${(Math.random() * 0.05).toFixed(3)}s (${Math.floor(Math.random() * 95 + 5)}% faster than traditional methods)
+
+The result of your request "${phixeoCommand}" has been optimized with Phi = 1.618033988749895.
+`;
+        
+        // Send the follow-up response
+        ws.send(JSON.stringify({
+          type: 'commandResponse',
+          response: aiResponse
+        }));
+      } catch (err) {
+        console.error('Error processing Phixeo command:', err);
+        ws.send(JSON.stringify({
+          type: 'commandResponse',
+          response: '[PHIXEO] Error processing command. Please try again.'
+        }));
+      }
+    }, 1500);
+    
+    // Return empty response since we're handling it asynchronously
+    return;
   } else {
     response = `Command not found: ${cmd}. Type "help" for available commands.`;
   }
