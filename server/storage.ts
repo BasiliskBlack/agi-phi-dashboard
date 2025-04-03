@@ -5,6 +5,9 @@ import {
   type File, type InsertFile,
   type SystemMetrics, type InsertSystemMetrics
 } from "@shared/schema";
+import { neon, neonConfig } from '@neondatabase/serverless';
+import { drizzle } from 'drizzle-orm/neon-serverless';
+import { eq, desc } from 'drizzle-orm';
 
 // Modify the interface with all CRUD methods needed
 export interface IStorage {
@@ -29,6 +32,112 @@ export interface IStorage {
   createSystemMetrics(metrics: InsertSystemMetrics): Promise<SystemMetrics>;
 }
 
+// PostgreSQL Storage Implementation
+export class PgStorage implements IStorage {
+  private db;
+  
+  constructor() {
+    neonConfig.fetchConnectionCache = true;
+    const sql = neon(process.env.DATABASE_URL!);
+    this.db = drizzle(sql);
+    
+    // Initialize with a default admin user if needed
+    this.initDefaultUser();
+  }
+  
+  private async initDefaultUser() {
+    try {
+      const existingAdmin = await this.getUserByUsername('admin');
+      if (!existingAdmin) {
+        await this.createUser({
+          username: 'admin',
+          password: 'admin',
+          displayName: 'Administrator',
+          role: 'admin'
+        });
+        console.log('Created default admin user');
+      }
+    } catch (error) {
+      console.error('Error initializing default user:', error);
+    }
+  }
+
+  // User methods
+  async getUser(id: string | number): Promise<User | undefined> {
+    const numId = typeof id === 'string' ? parseInt(id, 10) : id;
+    const result = await this.db.select().from(users).where(eq(users.id, numId));
+    return result.length > 0 ? result[0] : undefined;
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    const result = await this.db.select().from(users).where(eq(users.username, username));
+    return result.length > 0 ? result[0] : undefined;
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const result = await this.db.insert(users).values(insertUser).returning();
+    return result[0];
+  }
+  
+  // Conversation methods
+  async getConversation(id: number): Promise<Conversation | undefined> {
+    const result = await this.db.select().from(conversations).where(eq(conversations.id, id));
+    return result.length > 0 ? result[0] : undefined;
+  }
+  
+  async getConversationsByUserId(userId: string | number): Promise<Conversation[]> {
+    const numId = typeof userId === 'string' ? parseInt(userId, 10) : userId;
+    return await this.db.select().from(conversations).where(eq(conversations.userId, numId));
+  }
+  
+  async createConversation(insertConversation: InsertConversation): Promise<Conversation> {
+    const result = await this.db.insert(conversations).values(insertConversation).returning();
+    return result[0];
+  }
+  
+  // File methods
+  async getFile(id: number): Promise<File | undefined> {
+    const result = await this.db.select().from(files).where(eq(files.id, id));
+    return result.length > 0 ? result[0] : undefined;
+  }
+  
+  async getFilesByPath(path: string): Promise<File[]> {
+    // Here we're implementing a simple contains search
+    // For a more complex solution, use SQL LIKE or a specific path search
+    return await this.db
+      .select()
+      .from(files)
+      .where(eq(files.path, path));
+  }
+  
+  async createFile(insertFile: InsertFile): Promise<File> {
+    const result = await this.db.insert(files).values(insertFile).returning();
+    return result[0];
+  }
+  
+  // System metrics methods
+  async getSystemMetrics(id: number): Promise<SystemMetrics | undefined> {
+    const result = await this.db.select().from(systemMetrics).where(eq(systemMetrics.id, id));
+    return result.length > 0 ? result[0] : undefined;
+  }
+  
+  async getLatestSystemMetrics(): Promise<SystemMetrics | undefined> {
+    const result = await this.db
+      .select()
+      .from(systemMetrics)
+      .orderBy(desc(systemMetrics.timestamp))
+      .limit(1);
+    
+    return result.length > 0 ? result[0] : undefined;
+  }
+  
+  async createSystemMetrics(insertMetrics: InsertSystemMetrics): Promise<SystemMetrics> {
+    const result = await this.db.insert(systemMetrics).values(insertMetrics).returning();
+    return result[0];
+  }
+}
+
+// In-memory Storage Implementation (Backup or for Testing)
 export class MemStorage implements IStorage {
   private users: Map<number, User>;
   private conversations: Map<number, Conversation>;
@@ -187,4 +296,5 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+// Switch between PostgreSQL and in-memory storage here
+export const storage = new PgStorage();
