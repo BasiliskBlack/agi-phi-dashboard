@@ -340,8 +340,11 @@ function evalSafe(expr: string, variables: Record<string, any>): any {
  * Estimate memory usage (simplified)
  */
 function estimateMemoryUsage(): number {
-  return performance.memory ? 
-    Math.round(performance.memory.usedJSHeapSize / 1024 / 1024) : 
+  // Note: performance.memory is a Chrome-specific extension, not standard
+  // We use type assertion here for compatibility
+  const perf = performance as any;
+  return perf.memory ? 
+    Math.round(perf.memory.usedJSHeapSize / 1024 / 1024) : 
     Math.random() * 10 + 15; // Fallback if performance.memory is not available
 }
 
@@ -411,7 +414,7 @@ interface PhixeoState {
   clear: () => void;
 }
 
-export const usePhixeoStore = create<PhixeoState>((set, get) => ({
+export const usePhixeoStore = create<PhixeoState>((set: any, get: any) => ({
   code: '',
   nodes: [],
   optimizedNodes: [],
