@@ -1,0 +1,878 @@
+/* PhixeoChat.css - Styles for the PhixeoChat component */
+
+.phixeo-chat {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(30, 30, 45, 0.9);
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  align-items: center;
+  background: rgba(30, 30, 45, 0.9);
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  align-items: center;
+  background: rgba(30, 30, 45, 0.9);
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  flex-direction: column;
+  height: 100%;
+  background: rgba(20, 20, 30, 0.85);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(10px);
+}
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.phixeo-chat-header {
+  display: flex;
+  align-items: center;
+  background: rgba(30, 30, 45, 0.9);
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  align-items: center;
+  background: rgba(30, 30, 45, 0.9);
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  align-items: center;
+  background: rgba(30, 30, 45, 0.9);
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.phixeo-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.phixeo-chat-input {
+  display: flex;
+  align-items: center;
+  background: rgba(30, 30, 45, 0.9);
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  align-items: center;
+  background: rgba(30, 30, 45, 0.9);
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  align-items: center;
+  background: rgba(30, 30, 45, 0.9);
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  align-items: center;
+  background: rgba(30, 30, 45, 0.9);
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+}
+  display: flex;
+  align-items: center;
+  background: rgba(30, 30, 45, 0.9);
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  align-items: center;
+  background: rgba(30, 30, 45, 0.9);
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  align-items: center;
+  background: rgba(30, 30, 45, 0.9);
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  align-items: center;
+  background: rgba(30, 30, 45, 0.9);
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  padding: 0.5rem 1rem;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+  border-radius: 2rem;
+  box-shadow: 0 0 12px rgba(191, 161, 74, 0.5);
+  background: rgba(30, 30, 45, 0.9);
+  align-items: center;
+
+}
+
+.phixeo-chat-input:hover {
+  box-shadow: 0 0 16px rgba(191, 161, 74, 0.7);
+}
+
+.phixeo-chat-input input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: #e0e0e0;
+  font-size: 1rem;
+  padding: 0.5rem;
+  outline: none;
+}
+
+.phixeo-chat-input button {
+  background: none;
+  border: none;
+  color: #bfa14a;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.phixeo-chat-input button:hover {
+  color: #e0e0e0;
+}
+
+.phixeo-chat-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #bfa14a, #4b2e83);
+  box-shadow: 0 0 8px rgba(191, 161, 74, 0.5);
+  margin-right: 0.5rem;
+}

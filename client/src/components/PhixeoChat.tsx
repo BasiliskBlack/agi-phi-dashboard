@@ -5,6 +5,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { COLORS, SPACING, FONT_SIZE, RADIUS } from '@/lib/phixeo-styles';
 import { BotIcon, Send, User } from 'lucide-react';
 import { runPhixeoCode } from '@/lib/phixeo';
+import './PhixeoChat.css';
 
 type Message = {
   id: string;
@@ -28,6 +29,55 @@ const PhixeoChat: React.FC = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim() || isProcessing) return;
+
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      content: input,
+      sender: 'user',
+      timestamp: new Date(),
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+    setInput('');
+    processUserMessage(input);
+  };
+
+  return (
+    <div className="phixeo-chat">
+      <div className="phixeo-chat-header">
+        <div className="phixeo-chat-avatar"></div>
+        <h3>Phixeo AI Chat</h3>
+      </div>
+      <ScrollArea className="phixeo-chat-messages">
+        {messages.map((msg) => (
+          <div key={msg.id} className={`message message-${msg.sender}`}>
+            <span>{msg.content}</span>
+          </div>
+        ))}
+        <div ref={messagesEndRef} />
+      </ScrollArea>
+      <form className="phixeo-chat-input" onSubmit={handleSubmit}>
+        <input
+          ref={inputRef}
+          type="text"
+          value={input}
+          onChange={handleInputChange}
+          placeholder="Type your message..."
+        />
+        <button type="submit" disabled={isProcessing}>
+          <Send size={20} />
+        </button>
+      </form>
+    </div>
+  );
 
   // Auto-scroll to bottom of messages
   useEffect(() => {

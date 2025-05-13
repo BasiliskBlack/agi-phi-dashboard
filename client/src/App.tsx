@@ -16,16 +16,24 @@ function Router() {
   );
 }
 
+import { ThemeProvider } from "./lib/themeEngine.tsx";
+
+import { SidebarProvider } from "@/components/ui/sidebar";
+
 function App() {
   return (
-    <SystemProvider>
-      <WindowProvider>
-        <QueryClientProvider client={queryClient}>
-          <Router />
-          <Toaster />
-        </QueryClientProvider>
-      </WindowProvider>
-    </SystemProvider>
+    <ThemeProvider>
+      <SystemProvider>
+        <WindowProvider>
+          <SidebarProvider>
+            <QueryClientProvider client={queryClient}>
+              <Router />
+              <Toaster />
+            </QueryClientProvider>
+          </SidebarProvider>
+        </WindowProvider>
+      </SystemProvider>
+    </ThemeProvider>
   );
 }
 
